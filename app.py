@@ -1,40 +1,35 @@
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return """
+    <!DOCTYPE html>
     <html>
     <head>
-        <title>MTA Server</title>
+        <title>BLOKE TRANZA RP</title>
         <style>
             body {
-                margin: 0;
-                padding: 0;
-                background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-                font-family: Arial, sans-serif;
+                background: #0f0f0f;
                 color: white;
+                font-family: Arial;
                 text-align: center;
-            }
-            h1 {
-                margin-top: 40px;
-                font-size: 50px;
-                color: #00ffff;
-                text-shadow: 0 0 15px #00ffff;
+                padding: 40px;
             }
             .card {
-                background: #111;
-                width: 350px;
-                margin: 30px auto;
+                background: #1c1c1c;
                 padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 0 20px #00ffff;
+                margin: 20px auto;
+                width: 300px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px #00ffff;
             }
             .btn {
                 display: inline-block;
-                margin-top: 15px;
-                padding: 12px 25px;
+                margin-top: 10px;
+                padding: 10px 20px;
                 background: #00ffff;
                 color: black;
                 font-weight: bold;
@@ -54,7 +49,7 @@ def home():
         <div class="card">
             <h2>🌐 Conéctate</h2>
             <p>IP: 45.32.172.17:7117</p>
-            <a class="btn" href="mtasa://45.32.172.17:7117">Entrar al servidor</a>
+            <a class="btn" href="#">Entrar al servidor</a>
         </div>
 
         <div class="card">
@@ -65,7 +60,7 @@ def home():
 
         <div class="card">
             <h2>💎 Beneficios VIP</h2>
-            <p>Obtén autos exclusivos, dinero y ventajas únicas.</p>
+            <p>Obtén autos exclusivos y ventajas especiales</p>
         </div>
 
     </body>
@@ -73,4 +68,5 @@ def home():
     """
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
